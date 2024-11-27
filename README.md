@@ -1,70 +1,133 @@
-# Codebasics Q&A: Question and Answer System Based on Google Palm LLM and Langchain for E-learning company  
+# EdTech Platform Q&A 🌱
 
-This is an end to end LLM project based on Google Palm and Langchain. We are building a Q&A system for an e-learning company called codebasics (website: codebasics.io). Codebasics sells data related courses and bootcamps. They have thousands of learners who uses discord server or email to ask questions. This system will provide a streamlit based user interface for students where they can ask questions and get answers. 
+The **EdTech Platform Q&A** system is a streamlined question-and-answer solution designed for the e-learning company [Codebasics](https://codebasics.io). Leveraging the power of **Google PaLM**, **LangChain**, and advanced text embedding technologies, this system provides instant answers to learners' questions, reducing the workload of human support staff. 
 
-![](codebasics_q_and_a.png)
+Learners can interact with a user-friendly web interface built using **Streamlit**, asking questions about courses, bootcamps, and more, and receiving accurate responses directly from a preloaded FAQ knowledge base.
 
-## Project Highlights
+---
 
-- Use a real CSV file of FAQs that Codebasics company is using right now. 
-- Their human staff will use this file to assist their course learners.
-- We will build an LLM based question and answer system that can reduce the workload of their human staff.
-- Students should be able to use this system to ask questions directly and get answers within seconds
+## ✨ Project Highlights
 
-## You will learn following,
-  - Langchain + Google Palm: LLM based Q&A
-  - Streamlit: UI
-  - Huggingface instructor embeddings: Text embeddings
-  - FAISS: Vector databse
+- **Real FAQ Data**: Utilizes an actual CSV file of FAQs currently in use by Codebasics.
+- **Streamlit-Based Interface**: Provides an intuitive UI for learners to interact with the system.
+- **Efficiency Boost**: Automates the Q&A process to alleviate the workload of support staff.
+- **Seamless Workflow**: Allows quick creation of a knowledge base and real-time question answering.
 
-## Installation
+---
 
-1.Clone this repository to your local machine using:
+## 🚀 Features
 
-```bash
-  git clone https://github.com/codebasics/langchain.git
+- **Knowledge Base Creation**:
+  - Automatically builds a searchable knowledge base from an FAQ CSV file.
+  - Uses FAISS for efficient vector database management.
+- **AI-Powered Q&A**:
+  - Employs Google PaLM for natural language processing.
+  - Retrieves answers from the knowledge base with high accuracy using LangChain.
+- **Sample Questions**:
+  - Supports queries like:
+    - *Do you provide internships?*
+    - *Can I use Power BI on a Mac?*
+    - *Should I learn Power BI or Tableau?*
+- **Error Handling**:
+  - If an answer is not found in the context, the system transparently responds with *"I don't know."*
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework**: [Streamlit](https://streamlit.io/) for the web application.
+- **LLM**: [Google PaLM](https://makersuite.google.com/) for language understanding and question answering.
+- **Text Embeddings**: 
+  - [HuggingFace Instructor Embeddings](https://huggingface.co/) for creating high-quality document embeddings.
+- **Vector Database**: [FAISS](https://faiss.ai/) for efficient storage and retrieval.
+- **Environment Management**: [python-dotenv](https://github.com/theskumar/python-dotenv) for secure handling of API keys.
+- **LangChain**: Orchestrates the interaction between LLM, embeddings, and retrieval components.
+
+---
+
+## 📋 Prerequisites
+
+1. **Python Version**: Python 3.7 or higher.
+2. **API Key**: A valid Google PaLM API key from [MakerSuite](https://makersuite.google.com/).
+3. **Required Libraries**: Install dependencies listed in the `requirements.txt` file.
+
+---
+
+## 📦 Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Swayamjexe/Q-A-CSV-Bot.git
+   ```
+2. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. **Set Up API Key**:
+   - Create a `.env` file in the project directory:
+     ```bash
+     touch .env
+     ```
+   - Add your Google PaLM API key:
+     ```
+     GOOGLE_API_KEY="your_api_key_here"
+     ```
+
+---
+
+## 🖥️ Usage
+
+1. **Run the Application**:
+   ```bash
+   streamlit run main.py
+   ```
+2. **Using the App**:
+   - Click **Create Knowledge Base** to generate the FAQ database (this may take a moment).
+   - After creation, a directory named `faiss_index` will be generated in the project folder.
+   - Ask questions in the provided input field and receive instant answers!
+
+---
+
+## 🛠️ Project Structure
+
+```plaintext
+📁 3_project_codebasics_q_and_a/
+├── main.py                   # Streamlit application
+├── langchain_helper.py       # LangChain utilities for embeddings and retrieval
+├── codebasics_faqs.csv       # FAQ dataset used for knowledge base creation
+├── requirements.txt          # Required Python packages
+├── .env.example              # Example of environment configuration
+├── faiss_index/              # Vector database storage (created after knowledge base generation)
+└── README.md                 # Project documentation
 ```
-2.Navigate to the project directory:
 
-```bash
-  cd 3_project_codebasics_q_and_a
-```
-3. Install the required dependencies using pip:
+---
 
-```bash
-  pip install -r requirements.txt
-```
-4.Acquire an api key through makersuite.google.com and put it in .env file
+## 🧠 Sample Questions
 
-```bash
-  GOOGLE_API_KEY="your_api_key_here"
-```
-## Usage
+Here are some sample questions you can ask the system:
+- *Do you provide internships or offer EMI payments?*
+- *Do you have a JavaScript course?*
+- *Should I learn Power BI or Tableau?*
+- *Can I use Power BI on a Mac?*
+- *How do I enable Power Pivot?*
 
-1. Run the Streamlit app by executing:
-```bash
-streamlit run main.py
+---
 
-```
+## 🌱 Learning Outcomes
 
-2.The web app will open in your browser.
+Through this project, you will gain hands-on experience with:
+- **LangChain and Google PaLM**: Implementing a Q&A system using advanced language models.
+- **Text Embeddings**: Creating embeddings with HuggingFace Instructor.
+- **FAISS**: Building and querying a vector database.
+- **Streamlit**: Developing interactive web applications.
 
-- To create a knowledebase of FAQs, click on Create Knolwedge Base button. It will take some time before knowledgebase is created so please wait.
+---
 
-- Once knowledge base is created you will see a directory called faiss_index in your current folder
+## 🌟 Future Enhancements
 
-- Now you are ready to ask questions. Type your question in Question box and hit Enter
+- Enable multiple file formats for knowledge base creation (PDFs, JSON, etc.).
+- Add multi-language support for broader accessibility.
+- Integrate user feedback to refine answers and improve the model over time.
 
-## Sample Questions
-  - Do you guys provide internship and also do you offer EMI payments?
-  - Do you have javascript course?
-  - Should I learn power bi or tableau?
-  - I've a MAC computer. Can I use powerbi on it?
-  - I don't see power pivot. how can I enable it?
-
-## Project Structure
-
-- main.py: The main Streamlit application script.
-- langchain_helper.py: This has all the langchain code
-- requirements.txt: A list of required Python packages for the project.
-- .env: Configuration file for storing your Google API key.
+---
